@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  font-family: "Poppins", "Calibri", sans-serif;
+}
+
+body {
+  background-image: url("./img/Login-Greetings.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 100vh;
+  width: 90%;
+  padding-left: 2vw;
+  padding-right: 0;
+  overflow: none;
+}
+h1 {
+  font-size: 54px;
+  padding-left: 20px;
+  padding-top: 45px;
+  color: #33cf66;
+}
+.Login {
+  width: 380px;
+  margin: 20px;
+  position: absolute;
+  left: 19%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #3a0ca3;
+  border-radius: 3rem;
+  padding: 30px 45px 32px 40px;
+}
+
+label {
+  display: inline-block;
+  clear: left;
+  width: 250px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+}
+input {
+  display: inline-block;
+  border: 2px solid #f72585;
+  margin: 3px;
+  border-radius: 0.5em;
+  width: 95%;
+  height: 35px;
+  font-size: 16px;
+}
+
+.Login p {
+  padding: 3px 0;
+  margin: 5px 0;
+}
+
+.signin {
+  border: 1px;
+  margin: 12px 5px 0 5px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 4px 8px;
+  background-color: #3a0ca3;
+  color: azure;
+  cursor: pointer;
+  border-radius: 0.1rem;
+}
