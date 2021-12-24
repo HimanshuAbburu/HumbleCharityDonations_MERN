@@ -50,6 +50,10 @@
   float: right;
 }
 
+.about h1 {
+  color: #33cf66;
+}
+
 .grid {
   height: calc(300px + 10vw);
   display: flex;

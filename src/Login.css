@@ -3,18 +3,16 @@
   font-family: "Poppins", "Calibri", sans-serif;
 }
 
-body {
+.main {
   background-image: url("./img/Login-Greetings.jpeg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
   height: 100vh;
-  width: 90%;
-  padding-left: 2vw;
-  padding-right: 0;
+  width: 100%;
   overflow: none;
 }
-h1 {
+.main h1 {
   font-size: 54px;
   padding-left: 20px;
   padding-top: 45px;
