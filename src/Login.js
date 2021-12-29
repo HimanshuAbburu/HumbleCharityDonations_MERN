@@ -20,7 +20,6 @@ const Login = () => {
           </p>
           <button className="signin">Submit</button>
         </div>
-        <div></div>
       </form>
     </>
   );

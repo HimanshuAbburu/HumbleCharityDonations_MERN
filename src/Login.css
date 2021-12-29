@@ -30,7 +30,7 @@
   padding: 30px 45px 32px 40px;
 }
 
-label {
+.Login label {
   display: inline-block;
   clear: left;
   width: 250px;
@@ -38,7 +38,7 @@ label {
   font-weight: bold;
   font-size: 18px;
 }
-input {
+.Login input {
   display: inline-block;
   border: 2px solid #f72585;
   margin: 3px;
@@ -53,7 +53,7 @@ input {
   margin: 5px 0;
 }
 
-.signin {
+.Login .signin {
   border: 1px;
   margin: 12px 5px 0 5px;
   font-weight: bold;
