@@ -1,0 +1,103 @@
+.charitybody {
+  background-image: url("./img/Login-Greetings.jpeg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.charitybody h1 {
+  font-size: 72px;
+  margin: 26px;
+  color: #34c7c4;
+}
+
+.charitybody h3 {
+  margin: 26px;
+}
+
+.charitysignup {
+  -webkit-columns: 2 400px;
+  -moz-columns: 2 400px;
+  columns: 2 400px;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  column-gap: 2em;
+}
+
+.charitysignup label {
+  margin: 9px 7px 0 7px;
+  padding: 4px 7px 0 7px;
+  display: flex;
+  margin-left: 21px;
+  font-weight: bold;
+  color: #032d70;
+}
+.charitysignup label::after {
+  content: " *";
+  color: red;
+}
+ast {
+  color: red;
+}
+
+.charitysignup input[type="text"],
+[type="email"],
+[type="number"],
+[type="password"] {
+  margin: 9px 2px;
+  padding: 9px 1px;
+  background: rgba(255, 255, 255, 0.6);
+  display: flexbox;
+  width: 68%;
+  margin-left: 25px;
+  height: 2.3vh;
+  text-indent: 1em;
+  border-radius: 0.2rem;
+  border: 0.2em solid #24314c;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.signupbutton {
+  margin: 26px;
+  padding: 11px 20px;
+  border: 2px solid;
+  background-color: #2b9997;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1rem;
+}
+
+.upload label {
+  margin: 9px 7px 0 7px;
+  padding: 4px 7px 0 7px;
+  display: flex;
+  margin-left: 21px;
+  font-weight: bold;
+  color: #24314c;
+}
+.upload label::after {
+  content: " *";
+  color: red;
+}
+
+.upload {
+  border: 2px dashed rgb(22, 29, 111);
+  background-color: rgba(255, 255, 255, 0.8);
+  height: calc(150px + 10vw);
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: scroll;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.addbutton {
+  height: calc(30px + 3vw);
+  width: calc(30px + 3vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed rgb(22, 29, 111);
+  font-size: calc(15px + 2vw);
+  color: rgb(22, 29, 111);
+}
