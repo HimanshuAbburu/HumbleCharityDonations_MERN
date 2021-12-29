@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  /* padding: 0; */
+  margin: 0;
+  font-family: "Poppins", "Calibri", sans-serif;
+  scroll-behavior: smooth;
+}
+.body {
+  background-image: url("./img/Login-Greetings.jpeg");
+  width: 100%;
+  display: grid;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.body h1 {
+  font-size: 52px;
+  margin: 26px;
+  color: #34c7c4;
+}
+
+.body span {
+  margin: 26px;
+  font-weight: bold;
+}
+
+.body ast {
+  color: red;
+}
+
+.SignUp label {
+  margin: 9px 7px 0 7px;
+  padding: 4px 7px 0 7px;
+  display: flex;
+  margin-left: 21px;
+  font-weight: bold;
+  color: #032d70;
+}
+.SignUp label::after {
+  content: " *";
+  color: red;
+}
+
+.SignUp input {
+  margin: 9px 2px;
+  padding: 9px 2px;
+  background: rgba(255, 255, 255, 0.6);
+  display: flexbox;
+  width: 33%;
+  margin-left: 25px;
+  height: 2.3vh;
+  text-indent: 1em;
+  border-radius: 0.2rem;
+  border: 0.2em solid #24314c;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.SignUp button {
+  margin: 26px;
+  padding: 11px 20px;
+  border: 2px solid;
+  background-color: #2b9997;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1rem;
+}
