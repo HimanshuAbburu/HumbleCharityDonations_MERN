@@ -1,0 +1,93 @@
+body {
+  background-color: #ebf1f7;
+}
+.titlebar {
+  display: flex;
+  margin: 8px 25px;
+}
+
+.lefttitle {
+  margin: 25px;
+  color: #33b1af;
+  font-size: 24px;
+}
+
+.righttitle {
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.righttitle img {
+  image-rendering: auto;
+  width: 100%;
+  height: 59px;
+  margin-left: 42px;
+  margin-right: 22px;
+}
+
+.righttitle button {
+  margin: 26px;
+  padding: 11px 20px;
+  border: 2px solid;
+  background-color: #33b1af;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1rem;
+}
+.righttitle button:hover {
+  cursor: pointer;
+}
+
+.righttitle img:hover {
+  cursor: pointer;
+}
+
+.centerbody {
+  color: #33b1af;
+  font-weight: 900;
+  font-size: calc(17px + 2vw);
+  text-align: center;
+  display: block;
+}
+
+.dhpprofile {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: fit-content;
+  position: relative;
+}
+
+.dhpprofile h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.dhplabel {
+  color: #33b1af;
+  font-weight: bold;
+  margin: 0;
+  font-size: calc(13px + 0.3vw);
+  display: inline-flex;
+  width: 21%;
+}
+.dhpvalue {
+  color: rgb(22, 29, 111);
+  font-weight: 600;
+  margin: 0;
+  width: 45%;
+  display: inline-flex;
+}
+
+.close {
+  float: right;
+  font-size: 1.5em;
+}
+.close:hover {
+  cursor: pointer;
+  color: red;
+}
