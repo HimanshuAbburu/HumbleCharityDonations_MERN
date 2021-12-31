@@ -91,3 +91,91 @@ body {
   cursor: pointer;
   color: red;
 }
+
+.dhpdonationbox {
+  display: inline-flexbox;
+  border: 5px solid rgb(22, 29, 111);
+  border-radius: 1em;
+  margin: 40px 84px;
+  padding: 18px;
+  background-image: url("./img/Product.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-color: rgba(176, 153, 223, 0.99);
+  width: auto;
+}
+
+.dhpdonationbox form {
+  margin: 40px 20px;
+  padding: 10px;
+  display: flexbox;
+  box-sizing: border-box;
+}
+
+.dhpdonationboxlabel {
+  font-weight: bold;
+  font-size: calc(5px + 1vw);
+  margin-top: 12px;
+  padding: 5px;
+  display: flex;
+  resize: both;
+}
+.dhpdonationboxvalue {
+  margin-top: 0;
+  margin-left: 5px;
+  padding: 3px;
+  border: 0.2em solid rgb(22, 29, 111);
+  border-radius: 0.22em;
+  background: rgba(255, 255, 255, 0.6);
+  width: 29%;
+  height: auto;
+  resize: both;
+}
+
+.dhpbuttonsdiv {
+  margin-top: 2vh;
+}
+
+.dhpbuttons {
+  padding: 5px 12px;
+  border: 0;
+  margin: 5px;
+  background-color: #33b1af;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1em;
+  resize: both;
+}
+
+.donateditems {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.donationsitemlist {
+  width: 80vw;
+  max-width: 1170px;
+  margin: 4rem;
+  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .donationsitemlist {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start;
+  }
+}
+
+.donatedItemshead {
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: bold;
+  color: rgb(22, 29, 111);
+  background-color: #fff;
+  border: 2px;
+}

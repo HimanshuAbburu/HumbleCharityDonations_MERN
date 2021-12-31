@@ -2,8 +2,13 @@ import React from "react";
 import { useState } from "react";
 import "./DonorHomepage.css";
 import userImage from "./img/user.png";
+import clothes from "./img/Clothes.jpg";
+import { data } from "./dataFordhTesting.js";
 
 const DonorHomepage = () => {
+  const [showProfile, setShowProfile] = useState(false);
+  const [showDonate, setShowDonate] = useState(false);
+
   const DoneeProfile = () => {
     return (
       <>
@@ -48,7 +53,86 @@ const DonorHomepage = () => {
     );
   };
 
-  const [showProfile, setShowProfile] = useState(false);
+  const DonatedItems = () => {
+    const EachItem = ({ title, img, location }) => {
+      return (
+        <>
+          <div className="donateditems">
+            <img src={img} alt="" style={{ height: "200px", width: "300px" }} />
+            <h3>{title}</h3>
+            <h4>{location}</h4>
+          </div>
+        </>
+      );
+    };
+
+    return (
+      <>
+        <section className="donationsitemlist">
+          {data.map((item, id) => {
+            return (
+              <>
+                <EachItem key={item.id} {...item} />
+              </>
+            );
+          })}
+        </section>
+      </>
+    );
+  };
+
+  const DonateProduct = () => {
+    return (
+      <>
+        <form className="dhpdonationbox" action="#">
+          <div>
+            <div>
+              <label className="dhpdonationboxlabel" htmlFor="ProductName">
+                Product Name
+              </label>
+              <input
+                className="dhpdonationboxvalue"
+                type="text"
+                id="ProductName"
+              />
+            </div>
+            <div>
+              <label className="dhpdonationboxlabel" htmlFor="Address">
+                Address
+              </label>
+              <input className="dhpdonationboxvalue" type="text" id="Address" />
+            </div>
+            <div>
+              <label className="dhpdonationboxlabel" htmlFor="City">
+                City
+              </label>
+              <input className="dhpdonationboxvalue" type="text" id="City" />
+            </div>
+            <div>
+              <label className="dhpdonationboxlabel" htmlFor="Photos">
+                Photos
+              </label>
+              <input
+                type="file"
+                name="Photos"
+                accept="image/png, image/jpeg, image/jpg"
+              />
+              <div className="addbutton">+</div>
+            </div>
+            <div className="dhpbuttonsdiv">
+              <button className="dhpbuttons">Add Item</button>
+              <button className="dhpbuttons">Reset</button>
+              <button className="dhpbuttons">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </>
+    );
+  };
+
+  /*
+   * Below is the actual rendering section
+   */
 
   return (
     <>
@@ -57,7 +141,13 @@ const DonorHomepage = () => {
           <h1>H D</h1>
         </div>
         <div className="righttitle">
-          <button>Donate</button>
+          <button
+            onClick={() => {
+              setShowDonate(!showDonate);
+            }}
+          >
+            Donate
+          </button>
           <img
             src={userImage}
             alt="user"
@@ -68,12 +158,15 @@ const DonorHomepage = () => {
         </div>
       </div>
       {showProfile ? (
+        <DoneeProfile />
+      ) : (
         <div className="centerbody">
           <h1>Start Donating</h1>
         </div>
-      ) : (
-        <DoneeProfile />
       )}
+      {showDonate ? <DonateProduct /> : ""}
+      <h1 className="donatedItemshead">Donated Items</h1>
+      <DonatedItems />
     </>
   );
 };
