@@ -100,4 +100,5 @@ ast {
   border: 2px dashed rgb(22, 29, 111);
   font-size: calc(15px + 2vw);
   color: rgb(22, 29, 111);
+  resize: both;
 }
