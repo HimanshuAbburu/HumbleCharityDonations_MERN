@@ -1,0 +1,201 @@
+.charityprofile {
+  width: 45%;
+  margin: 0;
+}
+
+.charityprofile label {
+  margin: 9px 7px 0 7px;
+  padding: 4px 7px 0 7px;
+  display: flex;
+  margin-left: 21px;
+  font-weight: bold;
+  font-size: calc(15px+1.5vw);
+  color: #032d70;
+}
+
+.charityprofile input[type="text"],
+[type="email"],
+[type="number"],
+[type="password"] {
+  margin: 9px 2px;
+  padding: 9px 1px;
+  background: rgba(255, 255, 255, 0.6);
+  display: flexbox;
+  width: 68%;
+  margin-left: 25px;
+  height: calc(8px+2.3vh);
+  text-indent: 0.3em;
+  border-radius: 0.2rem;
+  border: 0.2em solid #24314c;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  resize: both;
+}
+
+@media screen and (min-width: 401px) {
+  .charityprofile {
+    font-size: 1.35vw;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+}
+
+.charityprofile button {
+  margin: 21px;
+  padding: 8px 17px;
+  border: 2px solid;
+  background-color: #2b9997;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1.2vw;
+  resize: both;
+}
+.charityViewPhotos img {
+  width: 220px;
+  border: 2px solid black;
+}
+
+.charityViewPhotos {
+  position: absolute;
+  float: right;
+  align-content: flex-end;
+  right: 0.2em;
+  left: 38%;
+  width: 30%;
+  height: 25px;
+}
+
+.repeatimages {
+  width: 50%;
+  max-width: 1170px;
+  margin: 4rem;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: flex-start;
+}
+@media screen and (min-width: 768px) {
+  .repeatimages {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start;
+  }
+}
+.charityProfileHead {
+  color: #2b9997;
+  margin: 20px 27px;
+  font-size: 2vw;
+}
+
+.chtitlebar {
+  display: flex;
+  margin: 8px 25px;
+}
+
+.chlefttitle {
+  margin: 25px;
+  color: #33b1af;
+  font-size: calc(24px+1vw);
+}
+
+.chrighttitle {
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.chrighttitle img {
+  image-rendering: auto;
+  height: calc(20px + 1vw);
+  width: calc(20px + 1vw);
+  margin-left: 42px;
+  margin-right: 22px;
+}
+
+.chrighttitle button {
+  margin: 26px;
+  padding: 11px 20px;
+  border: 2px solid;
+  background-color: #33b1af;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 0.3em;
+  font-size: 1rem;
+}
+.chrighttitle button:hover {
+  cursor: pointer;
+}
+
+.chrighttitle img:hover {
+  cursor: pointer;
+}
+
+.chcentertitle button {
+  margin-top: 25px;
+}
+
+/* navbar trivi */
+.chpmaindiv {
+  width: 100%;
+}
+.chptitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  height: calc(30px + 5vw);
+}
+.chptitleleft {
+  display: flex;
+  align-items: center;
+  height: calc(10px + 2vw);
+  color: #33b1af;
+  font-size: calc(10px + 1vw);
+  font-weight: bold;
+  width: 30%;
+}
+.chptitleright {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: calc(5px + 1vw);
+  color: #33b1af;
+  font-size: calc(5px + 1vw);
+  width: 30%;
+}
+.chptitleright div {
+  display: flex;
+  align-items: center;
+  height: calc(25px + 1vw);
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+.chptitleright div:hover {
+  cursor: pointer;
+}
+.chpnavbar {
+  height: calc(20px + 2vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: 40%;
+}
+.chpnavbar button {
+  height: calc(10px + 2vw);
+  outline: none;
+  border: none;
+  font-size: calc(10px + 0.5vw);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  transition-duration: 0.4s;
+}
+.userPNG {
+  height: calc(22px + 1vw);
+  width: calc(22px + 1vw);
+  display: flex;
+}
