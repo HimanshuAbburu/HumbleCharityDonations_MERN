@@ -14,13 +14,13 @@ export const data = [
   {
     id: 3,
     img: "https://media.istockphoto.com/photos/women-clothes-hanging-on-hangers-clothing-rails-fashion-design-picture-id916092484?k=20&m=916092484&s=612x612&w=0&h=2aTLAucj_-qbbfhBiJEXfdiY3-k0gx0el8OrKFpi3O8=",
-    title: "Only the hanger",
-    location: "California",
+    title: "Stand",
+    location: "London",
   },
   {
     id: 4,
     img: "https://media.istockphoto.com/photos/women-clothes-hanging-on-hangers-clothing-rails-fashion-design-picture-id916092484?k=20&m=916092484&s=612x612&w=0&h=2aTLAucj_-qbbfhBiJEXfdiY3-k0gx0el8OrKFpi3O8=",
-    title: "Only the hanger",
+    title: "All hanger's",
     location: "California",
   },
 ];
