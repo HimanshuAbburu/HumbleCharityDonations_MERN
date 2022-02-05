@@ -6,11 +6,20 @@ import "./Homepage.css";
 function Homepage() {
   return (
     <>
-      <div className="navbar">
+      <div className="navbar" id="navbar">
         <div className="btn" onClick={() => window.scrollTo(0, 0)}>
           <p>Home</p>
         </div>
-        <div className="btn" onClick={() => window.scrollTo(0, 530)}>
+        <div
+          className="btn"
+          onClick={() =>
+            window.scrollTo(
+              0,
+              document.getElementById("title").offsetHeight -
+                document.getElementById("navbar").offsetHeight
+            )
+          }
+        >
           <p>About</p>
         </div>
         <Link to="/Login" className="btn">
@@ -18,15 +27,15 @@ function Homepage() {
         </Link>
       </div>
 
-      <div className="title">
+      <div className="title" id="title">
         <div className="titlegrid">
           <div>
-            <h1>Online Charity Donations</h1>
+            <h1>Humble Charity Donations</h1>
             <p>A bridge between Donors and Donees.</p>
           </div>
         </div>
       </div>
-      <div className="intro">
+      <div className="intro" id="aboutus">
         <img src={HomeImage} alt="" />
         <div>
           <h3>About Us</h3>
