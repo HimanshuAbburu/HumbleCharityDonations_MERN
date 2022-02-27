@@ -1,66 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
-* {
-  /* padding: 0; */
-  margin: 0;
-  font-family: "Poppins", "Calibri", sans-serif;
-  scroll-behavior: smooth;
-}
 .body {
+  background-color: #fff;
   background-image: url("./img/Login-Greetings.jpeg");
-  width: 100%;
-  display: grid;
-  align-items: center;
-  background-size: cover;
+  background-position: right;
   background-repeat: no-repeat;
-  /* background-position: center; */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-}
-.body h1 {
-  font-size: 52px;
-  margin: 26px;
-  color: #34c7c4;
+  background-size: contain;
 }
 
-.body span {
-  margin: 26px;
-  font-weight: bold;
+.heading {
+  margin: 0.4em 2em;
 }
 
-.body ast {
-  color: red;
+.heading h1 {
+  color: #3aa5a3;
 }
 
 .SignUp label {
-  margin: 9px 7px 0 7px;
-  padding: 4px 7px 0 7px;
+  margin: 0.4em 2.2em;
   display: flex;
-  margin-left: 21px;
-  font-weight: bold;
+  font-weight: bolder;
   color: #032d70;
-}
-.SignUp label::after {
-  content: " *";
-  color: red;
+  font-size: calc(12px + 0.9vh);
 }
 
 .SignUp input {
-  margin: 9px 2px;
-  padding: 9px 2px;
-  background: rgba(255, 255, 255, 0.6);
-  display: flexbox;
-  width: 33%;
-  margin-left: 25px;
-  height: 2.3vh;
-  text-indent: 1em;
-  border-radius: 0.2rem;
-  border: 0.2em solid #24314c;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  margin: 0.4em 2em;
+  display: flex;
+  color: #032d70;
+  font-size: calc(12px + 0.9vh);
+  border: 2px solid #032d70;
+  border-radius: 4px;
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.4);
 }
+
 .SignUp button {
-  margin: 26px;
-  padding: 11px 20px;
+  margin: 2em;
+  padding: 0.8em 2em;
   border: 2px solid;
   background-color: #2b9997;
   color: aliceblue;
