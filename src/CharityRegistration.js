@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./CharityRegistration.css";
-import { CharityRegister, writeUserData } from "./Authentication";
+import { app, CharityRegister, writeUserData } from "./Authentication";
+const { getStorage, ref, uploadBytes } = require("firebase/storage");
 
 const CHARITY = "charity";
 
@@ -26,12 +28,25 @@ const FileURL = async (prop) => {
   return url;
 };
 
+const uploadToDatabase = async (file, photos, email) => {
+  const storage = getStorage(app);
+
+  const certificatesRef = ref(storage, `certificates/${email}`);
+  await uploadBytes(certificatesRef, file[0]);
+  const photosRef = ref(storage, `photos/${email}`);
+  for (let i = 0; i < photos.length; i++) {
+    const fileRef = ref(photosRef, `${i}`);
+    await uploadBytes(fileRef, photos[i]);
+  }
+};
+
 const CharityRegistration = () => {
   const [certificate, setCertificate] = useState({
     status: false,
     url: [],
     file: false,
   });
+
   const [photos, setPhotos] = useState({ status: false, url: [], file: false });
 
   const name = useRef(null);
@@ -65,11 +80,19 @@ const CharityRegistration = () => {
       email !== "" &&
       password !== "" &&
       reEnterPassword !== "" &&
-      phone !== ""
+      phone !== "" &&
+      file &&
+      photos
     ) {
       if (password === reEnterPassword) {
         try {
-          const userId = await CharityRegister({ email, password });
+          const userId = await CharityRegister({
+            email,
+            password,
+            file,
+            photos,
+          });
+
           await writeUserData(
             userId,
             name,
@@ -80,7 +103,8 @@ const CharityRegistration = () => {
             email,
             CHARITY,
           );
-          console.log("Success", userId);
+
+          await uploadToDatabase(file, photos, email);
         } catch (error) {
           console.log(error);
         }
@@ -107,12 +131,28 @@ const CharityRegistration = () => {
       email.current.value,
       password.current.value,
       reEnterPassword.current.value,
+      certificate.file,
+      photos.file,
     );
   };
 
   return (
     <>
       <div className="charitybody">
+        <div className="nav" id="nav">
+          <div className="navleft">
+            <p>H D</p>
+          </div>
+          <div className="navright">
+            <Link to="/" className="button">
+              <p>Home</p>
+            </Link>
+
+            <Link to="/Login" className="button">
+              <p>Sign In</p>
+            </Link>
+          </div>
+        </div>
         <div className="charityheading">
           <h1>Charity Registration</h1>
           <h3>
