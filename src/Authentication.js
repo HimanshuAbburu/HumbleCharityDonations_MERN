@@ -1,7 +1,7 @@
 const { initializeApp } = require("firebase/app");
 const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
 
-const { getDatabase, ref, set } = require("firebase/database");
+var { getDatabase, ref, set } = require("firebase/database");
 
 const firebaseConfig = {
   apiKey: "AIzaSyAeMyQZyT1JzbZQXYGc6ivmL_WH9li1YC0",
@@ -14,8 +14,7 @@ const firebaseConfig = {
   measurementId: "G-CWD05HG677",
 };
 
-const app = initializeApp(firebaseConfig);
-
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 
 export const DonorRegister = async (prop) => {
@@ -27,11 +26,16 @@ export const DonorRegister = async (prop) => {
 };
 
 export const CharityRegister = async (prop) => {
-  const { email, password, file, photos } = prop;
-  const user = await createUserWithEmailAndPassword(auth, email, password);
-  const userid = user.user.uid;
-  console.log(userid);
-  return userid;
+  try {
+    const { email, password } = prop;
+    const user = await createUserWithEmailAndPassword(auth, email, password);
+    const userid = user.user.uid;
+    console.log(userid);
+
+    return userid;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const database = getDatabase(app);
