@@ -5,22 +5,29 @@ import "./Login.css";
 const Login = () => {
   return (
     <>
+      <h1 id="head">Login</h1>
       <div className="main">
-        <h1 id="head">Login</h1>
-      </div>
-      <form action="#">
-        <div className="Login">
-          <p>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" />
-          </p>
-          <p>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" />
-          </p>
-          <button className="signin">Submit</button>
+        <div className="left">
+          <form className="login">
+            <div>
+              <label htmlFor="email" className="loginlabel">
+                Email
+              </label>
+              <input type="email" name="email" className="logininput" />
+            </div>
+            <div>
+              <label htmlFor="password" className="loginlabel">
+                Password
+              </label>
+              <input type="password" name="password" className="logininput" />
+            </div>
+            <button className="loginsignin">Submit</button>
+          </form>
         </div>
-      </form>
+        <div className="right">
+          <img src={Image} alt="" className="img" />
+        </div>
+      </div>
     </>
   );
 };
