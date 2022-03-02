@@ -4,63 +4,122 @@
 }
 
 .main {
-  background-image: url("./img/Login-Greetings.jpeg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  height: 100vh;
-  width: 100%;
-  overflow: none;
+  display: flex;
 }
-.main h1 {
-  font-size: 54px;
-  padding-left: 20px;
-  padding-top: 45px;
+
+.img {
+  height: 40vw;
+  /* width: fit-content; */
+}
+
+.left {
+  width: 40vw;
+  margin: auto;
+  margin-left: 2em;
+  border: 4px solid #3a0ca3;
+  border-radius: 2em;
+  padding: 2em 1.2em;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: hsl(244, 90%, 67%, 0.5);
+}
+
+.right {
+  display: flex;
+  height: 80vh;
+  width: 70%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#head {
+  font-size: calc(14px + 3vw);
+  margin: 1vw;
+  margin-left: 5%;
+  margin-right: 20%;
   color: #33cf66;
 }
-.Login {
-  width: 380px;
-  margin: 20px;
-  position: absolute;
-  left: 19%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid #3a0ca3;
-  border-radius: 3rem;
-  padding: 30px 45px 32px 40px;
-}
 
-.Login label {
-  display: inline-block;
-  clear: left;
-  width: 250px;
+.loginlabel {
+  display: flex;
+  width: auto;
   text-align: left;
   font-weight: bold;
-  font-size: 18px;
+  font-size: calc(10px + 1vh);
+  padding: 0.5em 0.2em;
 }
-.Login input {
+
+.logininput {
   display: inline-block;
-  border: 2px solid #f72585;
+  border: 0.15em solid #f72585;
   margin: 3px;
   border-radius: 0.5em;
-  width: 95%;
-  height: 35px;
-  font-size: 16px;
+  width: 90%;
+  height: 3.2vw;
+  font-size: calc(13px + 1vw);
 }
 
-.Login p {
-  padding: 3px 0;
-  margin: 5px 0;
-}
-
-.Login .signin {
+.loginsignin {
   border: 1px;
-  margin: 12px 5px 0 5px;
+  margin: 1em 0.8em 0 0.5em;
   font-weight: bold;
-  font-size: 16px;
-  padding: 4px 8px;
-  background-color: #3a0ca3;
+  font-size: calc(10px + 1vh);
+  padding: 0.5em 1em;
+  background-color: #34aa65;
   color: azure;
   cursor: pointer;
-  border-radius: 0.1rem;
+  border-radius: 0.3rem;
+}
+
+@media screen and (max-width: 450px) {
+  .main {
+    flex-direction: column-reverse;
+    font-size: calc(9px + 1vw);
+    width: 100%;
+  }
+
+  #head {
+    margin: 1em auto;
+    margin-left: 10%;
+    margin-right: 20%;
+  }
+
+  .left {
+    width: 80%;
+    background: transparent;
+    margin: 2vw;
+    padding: 1vw;
+    background-color: hsl(244, 90%, 67%, 0.3);
+  }
+
+  .img {
+    height: 80vw;
+    width: 100%;
+    overflow: auto;
+  }
+
+  .right {
+    width: auto;
+    height: fit-content;
+  }
+
+  .login {
+    width: 90%;
+  }
+
+  .loginlabel {
+    font-size: calc(9px + 1vw);
+  }
+  .logininput {
+    font-size: calc(9px + 1vw);
+    height: 3vh;
+    border: 0.2em solid #f72585;
+  }
+
+  .loginsignin {
+    font-size: calc(9px + 1vw);
+    height: 5vh;
+    padding: 0.8vw 4vw;
+    margin: 2vw 1vw;
+  }
 }
