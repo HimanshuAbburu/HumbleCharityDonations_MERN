@@ -1,7 +1,11 @@
 const { initializeApp } = require("firebase/app");
-const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
+const {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} = require("firebase/auth");
 
-var { getDatabase, ref, set } = require("firebase/database");
+var { getDatabase, ref, set, get, child } = require("firebase/database");
 
 const firebaseConfig = {
   apiKey: "AIzaSyAeMyQZyT1JzbZQXYGc6ivmL_WH9li1YC0",
@@ -16,6 +20,7 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
+const database = getDatabase();
 
 export const DonorRegister = async (prop) => {
   const { email, password } = prop;
@@ -30,7 +35,7 @@ export const CharityRegister = async (prop) => {
     const { email, password } = prop;
     const user = await createUserWithEmailAndPassword(auth, email, password);
     const userid = user.user.uid;
-    console.log(userid);
+    // console.log(userid);
 
     return userid;
   } catch (error) {
@@ -38,7 +43,28 @@ export const CharityRegister = async (prop) => {
   }
 };
 
-const database = getDatabase(app);
+export const signIn = async (email, password) => {
+  try {
+    const response = await signInWithEmailAndPassword(auth, email, password);
+
+    const dbRef = ref(getDatabase());
+    const userData = await get(child(dbRef, `users/${response.user.uid}`));
+
+    if (userData.exists()) {
+      return {
+        status: true,
+        loading: false,
+        userData: userData.val(),
+        uid: response.user.uid,
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return { status: false, loading: false, msg: error.code };
+  }
+};
+
+// Realtime Databse
 
 export async function writeUserData(
   userId,
