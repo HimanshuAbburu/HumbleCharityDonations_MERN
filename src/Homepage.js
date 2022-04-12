@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import HomeImage from "./img/Home.jpg";
 import "./Homepage.css";
@@ -7,6 +7,7 @@ function Homepage() {
   return (
     <>
       <div className="navbar" id="navbar">
+        <h2 className="leftNav">H D</h2>
         <div className="btn" onClick={() => window.scrollTo(0, 0)}>
           <p>Home</p>
         </div>
@@ -16,17 +17,18 @@ function Homepage() {
             window.scrollTo(
               0,
               document.getElementById("title").offsetHeight -
-                document.getElementById("navbar").offsetHeight
+                document.getElementById("navbar").offsetHeight,
             )
           }
         >
           <p>About</p>
         </div>
-        <Link to="/Login" className="btn">
-          <p>Sign In</p>
-        </Link>
+        <div>
+          <Link to="/Login" className="btn">
+            <p>Sign In</p>
+          </Link>
+        </div>
       </div>
-
       <div className="title" id="title">
         <div className="titlegrid">
           <div>
@@ -35,16 +37,19 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <div className="intro" id="aboutus">
-        <img src={HomeImage} alt="" />
-        <div>
-          <h3>About Us</h3>
-          <p>Small or Big..... </p>
-          <p>
-            {" "}
-            We accept all kinds of danations including Apparels, Clothes, Food,
-            Furnitures, Stationary and many more...
-          </p>
+      <div className="intro">
+        <h3>About Us</h3>
+        <div id="aboutus">
+          <div className="introImg">
+            <img src={HomeImage} alt="" />
+          </div>
+          <div className="introdetails">
+            <p>Small or Big..... </p>
+            <p>
+              We accept all kinds of danations including Apparels, Clothes,
+              Food, Furnitures, Stationary and many more...
+            </p>
+          </div>
         </div>
       </div>
       <div className="authentication">
