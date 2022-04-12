@@ -99,8 +99,8 @@ const CharityRegistration = () => {
             address,
             city,
             postcode,
-            phone,
             email,
+            phone,
             CHARITY,
           );
 
@@ -156,8 +156,7 @@ const CharityRegistration = () => {
         <div className="charityheading">
           <h1>Charity Registration</h1>
           <h3>
-            All fields marked with <span className="asterisk">*</span> are
-            mandatory.
+            <span className="asterisk">*</span> Mandatory fields.
           </h3>
         </div>
         <form onSubmit={handleSubmit}>
