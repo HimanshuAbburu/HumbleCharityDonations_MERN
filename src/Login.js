@@ -97,30 +97,28 @@ const RedirectPage = ({ LoginStatus }) => {
   return (
     <>
       {LoginStatus.userData.type === "charity" ? (
-        <Navigate
-          to="/CharityHomePage"
-          // state: {
-          //   uid: LoginStatus.uid,
-          //   name: LoginStatus.userData.Name,
-          //   address: LoginStatus.userData.Address,
-          //   city: LoginStatus.userData.City,
-          //   postcode: LoginStatus.userData.Postcode,
-          //   phoneNo: LoginStatus.userData.Phone,
-          //   email: LoginStatus.userData.Email,
-          // },
+        <Navigate to="/CharityHomePage"
+          state={{
+            uid: LoginStatus.uid,
+            name: LoginStatus.userData.Name,
+            address: LoginStatus.userData.Address,
+            city: LoginStatus.userData.City,
+            postcode: LoginStatus.userData.Postcode,
+            phoneNo: LoginStatus.userData.Phone,
+            email: LoginStatus.userData.Email,
+          }}
         />
       ) : (
-        <Navigate
-          to="/DonorHomepage"
-          // state: {
-          //   uid: LoginStatus.uid,
-          //   name: LoginStatus.userData.Name,
-          //   address: LoginStatus.userData.Address,
-          //   city: LoginStatus.userData.City,
-          //   postcode: LoginStatus.userData.Postcode,
-          //   phoneNo: LoginStatus.userData.Phone,
-          //   email: LoginStatus.userData.Email,
-          // },
+        <Navigate to="/DonorHomepage"
+          state={{
+            uid: LoginStatus.uid,
+            name: LoginStatus.userData.Name,
+            address: LoginStatus.userData.Address,
+            city: LoginStatus.userData.City,
+            postcode: LoginStatus.userData.Postcode,
+            phoneNo: LoginStatus.userData.Phone,
+            email: LoginStatus.userData.Email,
+          }}
         />
       )}
     </>
