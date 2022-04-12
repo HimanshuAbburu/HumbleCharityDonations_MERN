@@ -105,7 +105,7 @@ export const getCertificates = async (email) => {
   let url = [];
 
   const storage = getStorage();
-  // const listRef = ref_storage(storage, `certificates/${email}`);
+
   const certURL = await getDownloadURL(
     ref_storage(storage, `certificates/${email}`),
   ).then((url) => {
@@ -115,12 +115,6 @@ export const getCertificates = async (email) => {
 
   const otherPics = await ref_storage(storage, `photos/${email}/`);
   const lister = await list(otherPics);
-
-  // const otherPicsURL = await getDownloadURL(
-  //   ref_storage(storage, `photos/${email}/0`),
-  // ).then((url) => {
-  //   return url;
-  // });
 
   for (let i = 0; i < lister.items.length; i++) {
     const picURL = await getDownloadURL(
