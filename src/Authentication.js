@@ -1,3 +1,9 @@
+import {
+  getStorage,
+  list,
+  getDownloadURL,
+  ref as ref_storage,
+} from "firebase/storage";
 const { initializeApp } = require("firebase/app");
 const {
   getAuth,
@@ -26,7 +32,6 @@ export const DonorRegister = async (prop) => {
   const { email, password } = prop;
   const user = await createUserWithEmailAndPassword(auth, email, password);
   const userid = user.user.uid;
-  console.log(userid);
   return userid;
 };
 
@@ -36,7 +41,6 @@ export const CharityRegister = async (prop) => {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     const userid = user.user.uid;
     // console.log(userid);
-
     return userid;
   } catch (error) {
     console.log(error);
@@ -49,7 +53,6 @@ export const signIn = async (email, password) => {
 
     const dbRef = ref(getDatabase());
     const userData = await get(child(dbRef, `users/${response.user.uid}`));
-
     if (userData.exists()) {
       return {
         status: true,
@@ -65,7 +68,6 @@ export const signIn = async (email, password) => {
 };
 
 // Realtime Databse
-
 export async function writeUserData(
   userId,
   name,
@@ -92,3 +94,40 @@ export async function writeUserData(
     console.log(`${error}`, "line 65");
   }
 }
+
+export const getSingleDonee = async (uid) => {
+  const dbRef = ref(getDatabase());
+  const userData = await get(child(dbRef, `users/${uid}`));
+  return userData.val();
+};
+
+export const getCertificates = async (email) => {
+  let url = [];
+
+  const storage = getStorage();
+  // const listRef = ref_storage(storage, `certificates/${email}`);
+  const certURL = await getDownloadURL(
+    ref_storage(storage, `certificates/${email}`),
+  ).then((url) => {
+    return url;
+  });
+  url.push(certURL);
+
+  const otherPics = await ref_storage(storage, `photos/${email}/`);
+  const lister = await list(otherPics);
+
+  // const otherPicsURL = await getDownloadURL(
+  //   ref_storage(storage, `photos/${email}/0`),
+  // ).then((url) => {
+  //   return url;
+  // });
+
+  for (let i = 0; i < lister.items.length; i++) {
+    const picURL = await getDownloadURL(
+      ref_storage(storage, `photos/${email}/${i}`),
+    );
+    url.push(picURL);
+  }
+
+  return { status: true, urls: url };
+};
