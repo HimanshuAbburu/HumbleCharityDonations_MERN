@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import "./DonorRegistration.css";
 import { auth, DonorRegister, writeUserData } from "./Authentication";
 
@@ -43,8 +44,8 @@ const DonorRegistration = () => {
             address,
             city,
             postcode,
-            phone,
             email,
+            phone,
             DONOR,
           );
           console.log("Success", userId);
@@ -78,13 +79,24 @@ const DonorRegistration = () => {
 
   return (
     <>
+      <div className="nav" id="nav">
+        <div className="navleft">
+          <p>H D</p>
+        </div>
+        <div className="navright">
+          <Link to="/" className="button">
+            <p>Home</p>
+          </Link>
+
+          <Link to="/Login" className="button">
+            <p>Sign In</p>
+          </Link>
+        </div>
+      </div>
       <div className="body">
         <div className="heading">
           <h1>Donor Registration</h1>
-          <span>
-            All fields marked with <span className="asterisk">*</span> are
-            mandatory.
-          </span>
+          <span><span className="asterisk">*</span> Mandatory fields.</span>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="SignUp">
