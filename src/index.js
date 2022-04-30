@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CharityHomePage from "./CharityHomePage";
+import CharityProfile from "./CharityProfile";
 import CharityRegistration from "./CharityRegistration";
 import DonorHomepage from "./DonorHomepage";
 import DonorRegistraion from "./DonorRegistraion";
@@ -26,6 +27,8 @@ const Pages = () => {
         <Route exact path="/CharityHomePage" element={<CharityHomePage />} />
 
         <Route exact path="/DonorHomepage" element={<DonorHomepage />} />
+
+        <Route exact path="/CharityProfile" element={<CharityProfile />} />
       </Routes>
     </Router>
   );
@@ -35,5 +38,5 @@ ReactDOM.render(
   <React.StrictMode>
     <Pages />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );

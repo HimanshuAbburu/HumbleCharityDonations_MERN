@@ -9,6 +9,7 @@ const {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } = require("firebase/auth");
 
 var { getDatabase, ref, set, get, child } = require("firebase/database");
@@ -29,10 +30,16 @@ export const auth = getAuth();
 const database = getDatabase();
 
 export const DonorRegister = async (prop) => {
-  const { email, password } = prop;
-  const user = await createUserWithEmailAndPassword(auth, email, password);
-  const userid = user.user.uid;
-  return userid;
+  try {
+    const { email, password } = prop;
+    console.log(email, password);
+    const user = await createUserWithEmailAndPassword(auth, email, password);
+    // console.log(user);
+    const userid = user.user.uid;
+    return userid;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const CharityRegister = async (prop) => {
@@ -89,16 +96,56 @@ export async function writeUserData(
       type: type,
     });
 
-    console.log("Write Successful...");
+    return { status: 1 };
   } catch (error) {
-    console.log(`${error}`, "line 65");
+    console.log(error);
+    return { status: 0 };
   }
 }
 
+export const getDoneeData = async (requests) => {
+  let donees = [];
+  const doneeRef = ref(getDatabase());
+
+  for (let i = 0; i < requests.length; i++) {
+    const donee = await get(child(doneeRef, `users/${requests[i].doneeuid}`));
+    if (donee.exists()) {
+      donees.push(donee.val());
+    }
+  }
+  // console.log(donees);
+  return { status: 1, donees };
+};
+
 export const getSingleDonee = async (uid) => {
-  const dbRef = ref(getDatabase());
-  const userData = await get(child(dbRef, `users/${uid}`));
-  return userData.val();
+  try {
+    const dbRef = ref(getDatabase());
+    const userData = await get(child(dbRef, `users/${uid}`));
+    if (userData.exists()) {
+      return { status: 1, donee: userData.val() };
+    }
+  } catch (error) {
+    return { status: 0 };
+  }
+};
+
+export const getDonorsData = async (products) => {
+  // console.log(products);
+  try {
+    const donorRef = ref(getDatabase());
+    let donorsData = [];
+    for (let i = 0; i < products.length; i++) {
+      // console.log(products[i].uid);
+      const donor = await get(child(donorRef, `users/${products[i].uid}`));
+      if (donor.exists()) {
+        // console.log(donor.val());
+        donorsData.push(donor.val());
+      }
+    }
+    return { status: 1, donorsData };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getCertificates = async (email) => {
@@ -124,4 +171,14 @@ export const getCertificates = async (email) => {
   }
 
   return { status: true, urls: url };
+};
+
+export const logout = async () => {
+  try {
+    await signOut(auth);
+
+    return { status: 1 };
+  } catch (error) {
+    console.log(error);
+  }
 };

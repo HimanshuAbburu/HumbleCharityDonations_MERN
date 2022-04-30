@@ -50,7 +50,7 @@ const DonorRegistration = () => {
           );
           console.log("Success", userId);
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       } else {
         return {
@@ -96,7 +96,9 @@ const DonorRegistration = () => {
       <div className="body">
         <div className="heading">
           <h1>Donor Registration</h1>
-          <span><span className="asterisk">*</span> Mandatory fields.</span>
+          <span>
+            <span className="asterisk">*</span> Mandatory fields.
+          </span>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="SignUp">

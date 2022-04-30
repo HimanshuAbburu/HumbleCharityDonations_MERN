@@ -26,7 +26,7 @@
   font-size: calc(13px + 1vh);
   border: none;
   background-color: transparent;
-  color: #4895ef;
+  color: #410c97;
   text-decoration: none;
   display: flex;
   text-align: center;
@@ -78,7 +78,7 @@
   margin: 0.4em 2em;
   display: flex;
   color: #032d70;
-  font-size: calc(12px + 0.9vh);
+  font-size: calc(9px + 0.9vh);
   border: 2px solid #032d70;
   border-radius: 4px;
   width: 80%;

@@ -19,7 +19,6 @@ const Login = () => {
   const RedirectFromLogin = async (email, password) => {
     await signIn(email, password).then((response) => {
       setLoginStatus(response);
-      console.log(response);
     });
   };
 
@@ -48,7 +47,7 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          <h1 id="head">Login</h1>
+          <h1 id="head">Sign-In</h1>
           <div className="main">
             <div className="left">
               <form className="login">
@@ -97,7 +96,8 @@ const RedirectPage = ({ LoginStatus }) => {
   return (
     <>
       {LoginStatus.userData.type === "charity" ? (
-        <Navigate to="/CharityHomePage"
+        <Navigate
+          to="/CharityHomePage"
           state={{
             uid: LoginStatus.uid,
             name: LoginStatus.userData.Name,
@@ -109,7 +109,8 @@ const RedirectPage = ({ LoginStatus }) => {
           }}
         />
       ) : (
-        <Navigate to="/DonorHomepage"
+        <Navigate
+          to="/DonorHomepage"
           state={{
             uid: LoginStatus.uid,
             name: LoginStatus.userData.Name,

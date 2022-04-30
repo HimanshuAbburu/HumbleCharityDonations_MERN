@@ -19,14 +19,14 @@
   display: flex;
   font-weight: bolder;
   color: #032d70;
-  font-size: calc(12px + 0.9vh);
+  font-size: calc(9px + 0.9vh);
 }
 
 .SignUp input {
   margin: 0.4em 2em;
   display: flex;
   color: #032d70;
-  font-size: calc(12px + 0.9vh);
+  font-size: calc(9px + 0.9vh);
   border: 2px solid #032d70;
   border-radius: 4px;
   width: 30%;
