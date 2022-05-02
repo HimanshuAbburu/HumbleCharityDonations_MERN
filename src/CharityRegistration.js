@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./CharityRegistration.css";
-import { app, CharityRegister, writeUserData } from "./Authentication";
+import { app, CharityRegister, writeUserData, emailVerification, isGoodPassword } from "./Authentication";
 const { getStorage, ref, uploadBytes } = require("firebase/storage");
 
 const CHARITY = "charity";
@@ -88,9 +88,7 @@ const CharityRegistration = () => {
         try {
           const userId = await CharityRegister({
             email,
-            password,
-            file,
-            photos,
+            password
           });
 
           await writeUserData(
@@ -105,8 +103,10 @@ const CharityRegistration = () => {
           );
 
           await uploadToDatabase(file, photos, email);
+          await emailVerification();
+          alert("Registration Success...!");
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       } else {
         return {
@@ -119,22 +119,22 @@ const CharityRegistration = () => {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log(name.current.value);
-    RegisterAsCharity(
-      name.current.value,
-      address.current.value,
-      city.current.value,
-      postcode.current.value,
-      phone.current.value,
-      email.current.value,
-      password.current.value,
-      reEnterPassword.current.value,
-      certificate.file,
-      photos.file,
-    );
-  };
+  // const handleSubmit = (e) => {
+  //   // e.preventDefault();
+  //   console.log(name.current.value);
+  //   RegisterAsCharity(
+  //     name.current.value,
+  //     address.current.value,
+  //     city.current.value,
+  //     postcode.current.value,
+  //     phone.current.value,
+  //     email.current.value,
+  //     password.current.value,
+  //     reEnterPassword.current.value,
+  //     certificate.file,
+  //     photos.file,
+  //   );
+  // };
 
   return (
     <>
@@ -159,7 +159,7 @@ const CharityRegistration = () => {
             <span className="asterisk">*</span> Mandatory fields.
           </h3>
         </div>
-        <form onSubmit={handleSubmit}>
+        <div >
           <div className="charitysignup">
             <div className="fields">
               <div>
@@ -218,6 +218,12 @@ const CharityRegistration = () => {
                   name="reEnterPassword"
                   id="reEnterPassword"
                   ref={reEnterPassword}
+                  onClick={() => {
+                    const rule = isGoodPassword(password.current.value);
+                    if (rule.length !== 0) {
+                      alert(`Your password does not contain\n ${rule}`);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -312,11 +318,22 @@ const CharityRegistration = () => {
           <button
             type="submit"
             className="signupbutton"
-            onClick={RegisterAsCharity}
+            onClick={() => {
+              RegisterAsCharity(name.current.value,
+                address.current.value,
+                city.current.value,
+                postcode.current.value,
+                phone.current.value,
+                email.current.value,
+                password.current.value,
+                reEnterPassword.current.value,
+                certificate.file,
+                photos.file)
+            }}
           >
             SignUp
           </button>
-        </form>
+        </div>
       </div>
     </>
   );
