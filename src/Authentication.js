@@ -10,6 +10,8 @@ const {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
+  sendEmailVerification,
 } = require("firebase/auth");
 
 var { getDatabase, ref, set, get, child } = require("firebase/database");
@@ -30,28 +32,27 @@ export const auth = getAuth();
 const database = getDatabase();
 
 export const DonorRegister = async (prop) => {
-  try {
-    const { email, password } = prop;
-    console.log(email, password);
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    // console.log(user);
-    const userid = user.user.uid;
-    return userid;
-  } catch (error) {
-    console.log(error);
-  }
+  const { auth, email, password } = prop;
+  // console.log(email, password);
+  const user = await createUserWithEmailAndPassword(auth, email, password);
+  // console.log(user);
+  const userid = user.user.uid;
+  return userid;
 };
 
 export const CharityRegister = async (prop) => {
-  try {
-    const { email, password } = prop;
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    const userid = user.user.uid;
-    // console.log(userid);
-    return userid;
-  } catch (error) {
-    console.log(error);
-  }
+  const { email, password } = prop;
+  const user = await createUserWithEmailAndPassword(auth, email, password);
+  const userid = user.user.uid;
+  return userid;
+};
+
+export const emailVerification = async () => {
+  await sendEmailVerification(auth.currentUser).then((resp) => {
+    alert(
+      "Verification link sent to your email. Kindly check to verify your account.",
+    );
+  });
 };
 
 export const signIn = async (email, password) => {
@@ -69,7 +70,7 @@ export const signIn = async (email, password) => {
       };
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { status: false, loading: false, msg: error.code };
   }
 };
@@ -182,3 +183,41 @@ export const logout = async () => {
     console.log(error);
   }
 };
+
+export const forgotPassword = async (email) => {
+  const sender = await sendPasswordResetEmail(auth, email);
+  console.log(sender);
+};
+
+export function isGoodPassword(password) {
+
+  let rules = [
+    "Capital Case letters",
+    "Small Case letters",
+    "Numbers",
+    "Special Characters",
+    "Minimum Password length is 6 characters"
+  ];
+
+  if (password.match(/[a-z]+/)) {
+    rules = rules.filter((e) => e !== "Small Case letters");
+  }
+
+  if (password.match(/[A-Z]+/)) {
+    rules = rules.filter((e) => e !== "Capital Case letters");
+  }
+
+  if (password.match(/[0-9]+/)) {
+    rules = rules.filter((e) => e !== "Numbers");
+  }
+
+  if (password.match(/[ !"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~]/)) {
+    rules = rules.filter((e) => e !== "Special Characters");
+  }
+
+  if (password.toString().length > 6) {
+    rules = rules.filter((e) => e !== "Minimum Password length is 6 characters");
+  }
+
+  return rules;
+}
