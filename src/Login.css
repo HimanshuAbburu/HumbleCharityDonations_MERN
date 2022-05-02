@@ -71,6 +71,16 @@
   border-radius: 0.3rem;
 }
 
+.forgot {
+  color: brown;
+  margin: 1em 0 0 1em;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 450px) {
   .main {
     flex-direction: column-reverse;
@@ -121,5 +131,8 @@
     height: 5vh;
     padding: 0.8vw 4vw;
     margin: 2vw 1vw;
+  }
+  .forgot {
+    margin: 0.8em;
   }
 }
