@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "./DonorRegistration.css";
-import { auth, DonorRegister, writeUserData } from "./Authentication";
+import { auth, DonorRegister, writeUserData, isGoodPassword, emailVerification } from "./Authentication";
 
 const DonorRegistration = () => {
   const DONOR = "donor";
@@ -48,7 +48,10 @@ const DonorRegistration = () => {
             phone,
             DONOR,
           );
-          console.log("Success", userId);
+          await emailVerification();
+          // console.log(verificationResponse);
+          alert("Registration Success...!");
+          console.log("Success");
         } catch (error) {
           // console.log(error);
         }
@@ -152,6 +155,12 @@ const DonorRegistration = () => {
                 type="password"
                 name="reEnterPassword"
                 ref={reEnterPassword}
+                onClick={() => {
+                  const rule = isGoodPassword(password.current.value);
+                  if (rule.length !== 0) {
+                    alert(`Your password does not contain\n ${rule}`);
+                  }
+                }}
               />
             </p>
             <button type="submit" onClick={Register}>
