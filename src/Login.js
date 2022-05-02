@@ -3,7 +3,7 @@ import { Navigate, Link } from "react-router-dom";
 import Image from "./img/Login-Greetings.jpeg";
 import "./Login.css";
 
-import { signIn } from "./Authentication";
+import { signIn, forgotPassword } from "./Authentication";
 
 const Login = () => {
   const email = useRef(null);
@@ -33,16 +33,15 @@ const Login = () => {
         <RedirectPage LoginStatus={loginStatus} />
       ) : (
         <>
-          <div className="nav" id="nav">
-            <div className="navleft">
-              <p>H D</p>
-            </div>
-            <div className="navright">
-              <Link to="/" className="button">
+          <div className="navbar" id="navbar">
+            <h2 className="leftNav">H D</h2>
+            <div className="btn" >
+              <Link to="/" className="btn">
                 <p>Home</p>
               </Link>
-
-              <Link to="/Login" className="button">
+            </div>
+            <div>
+              <Link to="/Login" className="btn">
                 <p>Sign In</p>
               </Link>
             </div>
@@ -80,6 +79,16 @@ const Login = () => {
                 >
                   Submit
                 </button>
+                <p
+                  className="forgot"
+                  onClick={async () => {
+                    await forgotPassword(email.current.value).then((resp) => {
+                      alert("Check your email");
+                    });
+                  }}
+                >
+                  Forgot Password?
+                </p>
               </form>
             </div>
             <div className="right">
