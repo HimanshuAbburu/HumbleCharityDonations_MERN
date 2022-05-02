@@ -24,11 +24,6 @@ const getItems = async (city) => {
 };
 
 const getCitiesList = async () => {
-  // const urlDomain = "http://localhost:5000";
-
-  // const urlDomain =
-  //   "https://us-central1-humbledonations.cloudfunctions.net/app";
-
   const response = await fetch(
     `https://us-central1-humbledonations.cloudfunctions.net/app/getCitiesList`,
   );
@@ -38,11 +33,6 @@ const getCitiesList = async () => {
 };
 
 const sendRequestToDonor = async (city, donoruid, doneeuid, productId) => {
-  // const urlDomain = "http://localhost:5000";
-
-  // const urlDomain =
-  //   "https://us-central1-humbledonations.cloudfunctions.net/app";
-
   const response = await fetch(
     `https://us-central1-humbledonations.cloudfunctions.net/app/sendRequest`,
     {
@@ -52,15 +42,10 @@ const sendRequestToDonor = async (city, donoruid, doneeuid, productId) => {
     },
   );
   const data = response.json();
-  console.log(data);
+  // console.log(data);
 };
 
 const deletRequest = async (productinfo) => {
-  // const urlDomain = "http://localhost:5000";
-
-  // const urlDomain =
-  //   "https://us-central1-humbledonations.cloudfunctions.net/app";
-
   const response = await fetch(
     `https://us-central1-humbledonations.cloudfunctions.net/app/deleteRequest`,
     {
@@ -78,19 +63,11 @@ const deletRequest = async (productinfo) => {
 
 const getPhotos = async (id) => {
   try {
-    // const urlDomain = "http://localhost:5000";
-
-    // const urlDomain =
-    //   "https://us-central1-humbledonations.cloudfunctions.net/app";
-
-    // const url = ;
-    console.log(id);
-
     const response = await fetch(
       `https://us-central1-humbledonations.cloudfunctions.net/app/getPhoto/${id}`,
     );
     const data = response.json();
-    console.log(response);
+    // console.log(response);
     return data;
   } catch (error) {
     console.log(error);
@@ -126,7 +103,7 @@ const CharityHomePage = () => {
       // console.log(response);
       setCitiesList(response);
     });
-    return () => {}; // cleanup
+    return () => { }; // cleanup
   }, []); //reduce memory leaks
 
   // console.log(searchCity.current.value);
@@ -516,7 +493,7 @@ const Item = ({
                     };
 
                     deletRequest(data).then((response) => {
-                      console.log(response);
+                      // console.log(response);
                       if (response.status) {
                         setReload(!reload);
                       }
@@ -612,7 +589,7 @@ const Images = ({ photos }) => {
     if (photos.length) {
       setAllImages({ status: 0, noimage: 0 });
       convertbuff(photos).then((response) => {
-        console.log(response);
+        // console.log(response);
         setAllImages({ status: 1, response });
       });
     } else {
@@ -656,7 +633,7 @@ const convertbuff = async (photos) => {
   let photoarray = [];
   for (let i = 0; i < photos.length; i++) {
     const response = await getPhotos(photos[i]);
-    console.log(response);
+    // console.log(response);
     if (response.status === 1) {
       const onlybuff = response.photoBuffer.map((buff) => {
         return Buffer.from(buff.data);
